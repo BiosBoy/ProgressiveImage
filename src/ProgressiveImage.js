@@ -7,10 +7,11 @@ const ProgressiveImage = ({ imgSrc }) => {
   const [imageLoaded, setImageLoading] = useState("");
 
   // Our events handlers
+  // Here we use "[]" to fire useCallback only once (aka onMount)
   const handleLoad = useCallback(() => setImageLoading(true), []);
   const handleError = useCallback(() => setImageLoading(false), []);
 
-  // Here we use "[]" to fire useCallback only once (aka onMount)
+  // This my personal trick to prevent image from appear
   const showImage = !imageLoaded ? { display: "none" } : {};
 
   const ImageToRender = (
